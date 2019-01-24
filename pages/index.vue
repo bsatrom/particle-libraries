@@ -1,12 +1,17 @@
 <template>
   <div>
-    <h2>The Amazing Particle Libraries Registry!</h2>
-    <ul>
-      <li v-for="library in libraries" :key="library.id">
-        <a :href="library.attributes.url" target="_new">{{library.attributes.name}}</a>
-        by {{library.attributes.author}}
-      </li>
-    </ul>
+    <h2 class="code f3">The Amazing Particle Libraries Registry!</h2>
+    <v-list two-line>
+      <template v-for="library in libraries">
+        <v-list-tile-content :key="library.id">
+          <a :href="library.attributes.url" target="_new">
+            <v-list-tile-title v-html="library.attributes.name">{{library.attributes.name}}</v-list-tile-title>
+          </a>
+          by {{library.attributes.author}}
+          <v-list-tile-sub-title v-html="library.attributes.sentence"></v-list-tile-sub-title>
+        </v-list-tile-content>
+      </template>
+    </v-list>
   </div>
 </template>
 <script>
