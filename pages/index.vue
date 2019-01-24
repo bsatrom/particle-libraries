@@ -1,23 +1,18 @@
 <template>
   <div>
-    <h2 class="code f3">The Amazing Particle Libraries Registry!</h2>
-    <v-list two-line>
-      <template v-for="library in libraries">
-        <v-list-tile-content :key="library.id">
-          <a :href="library.attributes.url" target="_new">
-            <v-list-tile-title v-html="library.attributes.name">{{library.attributes.name}}</v-list-tile-title>
-          </a>
-          by {{library.attributes.author}}
-          <v-list-tile-sub-title v-html="library.attributes.sentence"></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </template>
-    </v-list>
+    <Libraries></Libraries>
   </div>
 </template>
+
 <script>
-import { mapState } from "vuex";
+import Libraries from "~/components/Libraries.vue";
 
 export default {
-  computed: mapState(["libraries"])
+  components: {
+    Libraries
+  },
+  async fetch({ store }) {
+    await store.dispatch("LOAD_LIBRARIES", "public");
+  }
 };
 </script>

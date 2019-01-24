@@ -20,10 +20,10 @@ export const mutations = {
 };
 
 export const actions = {
-  async nuxtServerInit({ commit }) {
+  async LOAD_LIBRARIES({ commit }, scope) {
     const response = await particle.listLibraries({
       limit: 25,
-      scope: 'public',
+      scope: scope,
       auth: process.env.PARTICLE_TOKEN
     });
 
