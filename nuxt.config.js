@@ -22,7 +22,7 @@ module.exports = {
    */
   loading: { color: '#3B8070' },
   modules: ['@nuxtjs/dotenv', '@nuxtjs/vuetify'],
-  css: ['tachyons/css/tachyons.min.css'],
+  css: ['tachyons/css/tachyons.min.css', '~/assets/transitions.css'],
   /*
    ** Build configuration
    */

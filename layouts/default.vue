@@ -8,6 +8,7 @@
         <nuxt-link class="link underline-hover" to="/featured">Featured</nuxt-link>
       </nav>
     </header>
+    <h2 class="code f3">The Amazing Particle Libraries Registry!</h2>
     <nuxt></nuxt>
   </div>
 </template>
