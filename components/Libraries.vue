@@ -9,6 +9,12 @@
             </a>
             by {{library.attributes.author}}
             <v-list-tile-sub-title v-html="library.attributes.sentence"></v-list-tile-sub-title>
+            <v-list-tile-action>
+              <v-list-tile-action-text>
+                Version : {{ library.attributes.version }}
+                | Installs: {{ library.attributes.installs }}
+              </v-list-tile-action-text>
+            </v-list-tile-action>
           </v-list-tile-content>
         </v-list-title>
       </template>
