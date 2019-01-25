@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <div class="pa3">
     <header>
-      <nav class="flex w-75 justify-around f4 pa1">
-        <nuxt-link class="link underline-hover" to="/">Public</nuxt-link>
-        <nuxt-link class="link underline-hover" to="/official">Official</nuxt-link>
-        <nuxt-link class="link underline-hover" to="/verified">Verified</nuxt-link>
-      </nav>
+      <h2 class="code f3">The Amazing Particle Libraries Registry!</h2>
+      <b-nav fill class="f4">
+        <b-nav-item>
+          <nuxt-link to="/">Public</nuxt-link>
+        </b-nav-item>
+        <b-nav-item>
+          <nuxt-link to="/official">Official</nuxt-link>
+        </b-nav-item>
+        <b-nav-item>
+          <nuxt-link to="/verified">Verified</nuxt-link>
+        </b-nav-item>
+      </b-nav>
     </header>
-    <h2 class="code f3">The Amazing Particle Libraries Registry!</h2>
     <nuxt></nuxt>
   </div>
 </template>
