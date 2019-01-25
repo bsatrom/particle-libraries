@@ -16,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.3.0",
     "@nuxtjs/vuetify": "^0.5.2",
+    "number-formatter": "^1.2.0",
     "nuxt": "^2.0.0",
     "particle-api-js": "^7.3.0",
     "tachyons": "^4.11.1",

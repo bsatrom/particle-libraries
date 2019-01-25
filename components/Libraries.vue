@@ -12,7 +12,7 @@
             <v-list-tile-action>
               <v-list-tile-action-text>
                 Version : {{ library.attributes.version }}
-                | Installs: {{ library.attributes.installs }}
+                | Installs: {{ library.attributes.installs | formatNumber }}
               </v-list-tile-action-text>
             </v-list-tile-action>
           </v-list-tile-content>
