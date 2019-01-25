@@ -5,7 +5,6 @@
         <nuxt-link class="link underline-hover" to="/">Public</nuxt-link>
         <nuxt-link class="link underline-hover" to="/official">Official</nuxt-link>
         <nuxt-link class="link underline-hover" to="/verified">Verified</nuxt-link>
-        <nuxt-link class="link underline-hover" to="/featured">Featured</nuxt-link>
       </nav>
     </header>
     <h2 class="code f3">The Amazing Particle Libraries Registry!</h2>

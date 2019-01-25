@@ -22,7 +22,7 @@ module.exports = {
    ** Customize the progress bar color
    */
   loading: { color: '#3B8070' },
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/vuetify'],
+  modules: ['@nuxtjs/dotenv', 'bootstrap-vue/nuxt'],
   css: ['tachyons/css/tachyons.min.css', '~/assets/transitions.css'],
   plugins: ['~/plugins/filters'],
   /*
