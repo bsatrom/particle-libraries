@@ -29,7 +29,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    vendor: ['particle-api-js'],
+    vendor: ['particle-api-js', 'axios', 'url-parse'],
     /*
      ** Run ESLint on save
      */

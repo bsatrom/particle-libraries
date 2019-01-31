@@ -16,12 +16,15 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.3.0",
     "approximate-number": "^2.0.0",
+    "axios": "^0.18.0",
     "bootstrap-vue": "^2.0.0-rc.11",
     "number-formatter": "^1.2.0",
     "nuxt": "^2.0.0",
     "particle-api-js": "^7.3.0",
     "tachyons": "^4.11.1",
     "tachyons-debug": "^1.1.11",
+    "url": "^0.11.0",
+    "url-parse": "^1.4.4",
     "vuetify": "^1.4.3"
   },
   "devDependencies": {

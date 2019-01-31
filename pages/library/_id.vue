@@ -5,11 +5,14 @@
         <b-btn variant="primary" target="_new" :href="library.attributes.url">View on GitHub</b-btn>
       </template>
     </b-jumbotron>
+    <div class="pa1" v-html="readme"></div>
   </div>
 </template>
 
 <script>
 import particle from "~/plugins/particle";
+import axios from "~/plugins/axios";
+import Url from "url-parse";
 
 export default {
   async asyncData({ route }) {
@@ -18,7 +21,10 @@ export default {
       auth: process.env.PARTICLE_TOKEN
     });
 
-    return { library: response.body.data };
+    const gitHubUrl = new Url(response.body.data.attributes.url);
+    const readme = await axios.get(`${gitHubUrl.pathname}/readme`);
+
+    return { library: response.body.data, readme: readme.data };
   }
 };
 </script>
