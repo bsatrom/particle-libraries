@@ -1,11 +1,16 @@
 <template>
   <div>
     <b-jumbotron :header="library.id" :lead="library.attributes.sentence">
+      <p>
+        <small>by {{library.attributes.author}}</small>
+        <b-badge variant="primary">{{ library.attributes.version }}</b-badge>
+        <b-badge variant="secondary">{{ library.attributes.installs | approximate }}</b-badge>
+      </p>
       <template v-if="library.attributes.url">
         <b-btn variant="primary" target="_new" :href="library.attributes.url">View on GitHub</b-btn>
       </template>
     </b-jumbotron>
-    <b-container fluid v-html="readme"></b-container>
+    <b-container v-if="readme" fluid v-html="readme"></b-container>
   </div>
 </template>
 
@@ -21,10 +26,21 @@ export default {
       auth: process.env.PARTICLE_TOKEN
     });
 
-    const gitHubUrl = new Url(response.body.data.attributes.url);
-    const readme = await axios.get(`${gitHubUrl.pathname}/readme`);
+    try {
+      const gitHubUrl = new Url(response.body.data.attributes.url);
+      const authorImage = gitHubUrl.pathname.split("/")[1];
+      const readme = await axios.get(`${gitHubUrl.pathname}/readme`);
 
-    return { library: response.body.data, readme: readme.data };
+      return {
+        library: response.body.data,
+        readme: readme.data
+      };
+    } catch (err) {
+      return {
+        library: response.body.data,
+        readme: null
+      };
+    }
   }
 };
 </script>
