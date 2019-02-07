@@ -29,6 +29,10 @@ a {
   color: #03aeef;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 1);
+}
+
 .router-link-exact-active,
 .nuxt-link-exact-active {
   font-weight: bold;
