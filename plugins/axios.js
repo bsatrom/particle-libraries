@@ -6,3 +6,10 @@ export default axios.create({
     Accept: 'application/vnd.github.VERSION.html'
   }
 });
+
+export const particleAPI = axios.create({
+  baseURL: 'https://api.particle.io/',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+});

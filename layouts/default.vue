@@ -27,13 +27,15 @@
 </template>
 
 <script>
+import { particleAPI } from "~/plugins/axios";
+
 export default {
   asyncData({ app }) {
     app.$login();
   },
   computed: {
     loggedIn() {
-      return this.$store.state.oauth.accessToken;
+      return this.$store.state.api.token;
     }
   },
   methods: {
@@ -42,6 +44,31 @@ export default {
     },
     logout() {
       this.$logout("/");
+    }
+  },
+  async mounted() {
+    if (this.$route.query.code) {
+      this.$store.commit("setTokenCode", this.$route.query.code);
+
+      try {
+        const response = await particleAPI.post(
+          "oauth/token",
+          `grant_type=authorization_code&client_id=${
+            process.env.OAUTH_CLIENT_ID
+          }&client_secret=${process.env.OAUTH_CLIENT_SECRET}&code=${
+            this.$route.query.code
+          }`,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            }
+          }
+        );
+
+        this.$store.commit("setAccessToken", response.data);
+      } catch (err) {
+        console.log("Unable to obtain token: ", err);
+      }
     }
   }
 };

@@ -33,7 +33,10 @@ module.exports = {
     oauthHost: process.env.OAUTH_HOST,
     oauthClientID: process.env.OAUTH_CLIENT_ID,
     oauthClientSecret: process.env.OAUTH_CLIENT_SECRET,
-    moduleName: 'oauth'
+    moduleName: 'oauth',
+    fetchUser: (accessToken, request) => {
+      console.log('TOKEN: ', accessToken);
+    }
   },
   css: ['tachyons/css/tachyons.min.css', '~/assets/transitions.css'],
   plugins: ['~/plugins/filters'],

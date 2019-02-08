@@ -11,14 +11,21 @@ export const state = () => ({
       }
     }
   ],
-  oauth: {
-    accessToken: null
+  api: {
+    tokenCode: null,
+    token: null
   }
 });
 
 export const mutations = {
   setLibraries(state, libraries) {
     state.libraries = libraries;
+  },
+  setTokenCode(state, tokenCode) {
+    state.api.tokenCode = tokenCode;
+  },
+  setAccessToken(state, accessToken) {
+    state.api.token = accessToken;
   }
 };
 
@@ -27,7 +34,9 @@ export const actions = {
     const response = await particle.listLibraries({
       limit: 25,
       scope: scope,
-      auth: state.oauth.accessToken || process.env.PARTICLE_TOKEN
+      auth: state.api.token
+        ? state.api.token['access_token']
+        : process.env.PARTICLE_TOKEN
     });
 
     const libraries = response.body.data;
