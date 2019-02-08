@@ -1,10 +1,14 @@
-require('dotenv').config();
+const DEV = process.env.NODE_ENV === 'development';
+
+if (DEV) {
+  require('dotenv').config();
+}
 
 module.exports = {
   /*
    ** Headers of the page
    */
-  mode: 'spa',
+  dev: DEV,
   head: {
     title: 'particle-libraries',
     meta: [
@@ -22,7 +26,15 @@ module.exports = {
    ** Customize the progress bar color
    */
   loading: { color: '#3B8070' },
-  modules: ['@nuxtjs/dotenv', 'bootstrap-vue/nuxt'],
+  modules: ['nuxt-oauth', '@nuxtjs/dotenv', 'bootstrap-vue/nuxt'],
+  oauth: {
+    sessionName: 'particleSession',
+    secretKey: process.env.SECRET_KEY,
+    oauthHost: process.env.OAUTH_HOST,
+    oauthClientID: process.env.OAUTH_CLIENT_ID,
+    oauthClientSecret: process.env.OAUTH_CLIENT_SECRET,
+    moduleName: 'oauth'
+  },
   css: ['tachyons/css/tachyons.min.css', '~/assets/transitions.css'],
   plugins: ['~/plugins/filters'],
   /*

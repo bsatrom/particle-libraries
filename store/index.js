@@ -10,7 +10,10 @@ export const state = () => ({
         name: 'Foo Lib'
       }
     }
-  ]
+  ],
+  oauth: {
+    accessToken: null
+  }
 });
 
 export const mutations = {
@@ -20,11 +23,11 @@ export const mutations = {
 };
 
 export const actions = {
-  async LOAD_LIBRARIES({ commit }, scope) {
+  async LOAD_LIBRARIES({ commit, state }, scope) {
     const response = await particle.listLibraries({
       limit: 25,
       scope: scope,
-      auth: process.env.PARTICLE_TOKEN
+      auth: state.oauth.accessToken || process.env.PARTICLE_TOKEN
     });
 
     const libraries = response.body.data;

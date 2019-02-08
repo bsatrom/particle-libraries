@@ -11,7 +11,8 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "now-build": "nuxt generate"
+    "now-build": "nuxt generate",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.3.0",
@@ -20,6 +21,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "number-formatter": "^1.2.0",
     "nuxt": "^2.0.0",
+    "nuxt-oauth": "^2.0.2",
     "particle-api-js": "^7.3.0",
     "tachyons": "^4.11.1",
     "tachyons-debug": "^1.1.11",
