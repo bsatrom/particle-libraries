@@ -14,8 +14,14 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            <b-form-input
+              size="sm"
+              class="mr-sm-2"
+              type="text"
+              v-model="searchTerm"
+              placeholder="Search"
+            />
+            <b-button size="sm" class="my-2 my-sm-0" @click="searchLibs">Search</b-button>
           </b-nav-form>
           <b-nav-item @click="logout" v-if="loggedIn">Log Out</b-nav-item>
           <b-nav-item @click="login" v-else>Log In</b-nav-item>
@@ -38,12 +44,22 @@ export default {
       return this.$store.state.api.token;
     }
   },
+  data() {
+    return {
+      searchTerm: ""
+    };
+  },
   methods: {
     login() {
       this.$login();
     },
     logout() {
       this.$logout("/");
+    },
+    async searchLibs() {
+      this.$store.commit("setSearchFilter", this.$data.searchTerm);
+
+      await this.$store.dispatch("LOAD_LIBRARIES", this.$data.scope);
     }
   },
   async mounted() {

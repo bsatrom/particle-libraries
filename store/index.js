@@ -11,6 +11,8 @@ export const state = () => ({
       }
     }
   ],
+  searchTerm: '',
+  searchScope: 'public',
   api: {
     tokenCode: null,
     token: null
@@ -26,6 +28,12 @@ export const mutations = {
   },
   setAccessToken(state, accessToken) {
     state.api.token = accessToken;
+  },
+  setSearchFilter(state, searchTerm) {
+    state.searchTerm = searchTerm;
+  },
+  setSearchScope(state, searchScope) {
+    state.searchScope = searchScope;
   }
 };
 
@@ -34,6 +42,7 @@ export const actions = {
     const response = await particle.listLibraries({
       limit: 25,
       scope: scope,
+      filter: state.searchTerm,
       auth: state.api.token
         ? state.api.token['access_token']
         : process.env.PARTICLE_TOKEN
@@ -42,5 +51,6 @@ export const actions = {
     const libraries = response.body.data;
 
     commit('setLibraries', libraries);
+    commit('setSearchScope', scope);
   }
 };
