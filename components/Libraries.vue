@@ -21,13 +21,32 @@
         </small>
       </b-list-group-item>
     </b-list-group>
+    <b-pagination
+      size="md"
+      align="center"
+      @input="pageResults"
+      :total-rows="this.$store.state.totalRows"
+      v-model="currentPage"
+      :per-page="this.$store.state.resultsToReturn"
+    ></b-pagination>
   </div>
 </template>
 <script>
 import { mapState } from "vuex";
 
 export default {
-  computed: mapState(["libraries"])
+  computed: mapState(["libraries"]),
+  data() {
+    return {
+      currentPage: 1
+    };
+  },
+  methods: {
+    async pageResults(page) {
+      this.$store.commit("setPage", this.$data.currentPage);
+      await this.$store.dispatch("LOAD_LIBRARIES", this.$data.scope);
+    }
+  }
 };
 </script>
 
@@ -38,5 +57,18 @@ export default {
 
 .v-list__tile__content {
   margin-bottom: 10px;
+}
+
+.b-pagination {
+  margin-top: 1rem;
+}
+
+.page-link {
+  color: #03aeef;
+}
+
+.page-link.btn-primary {
+  color: #fff;
+  background-color: #03aeef;
 }
 </style>

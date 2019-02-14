@@ -13,6 +13,9 @@ export const state = () => ({
   ],
   searchTerm: '',
   searchScope: 'public',
+  pageNumber: '1',
+  resultsToReturn: '15',
+  totalRows: '100',
   api: {
     tokenCode: null,
     token: null
@@ -34,14 +37,18 @@ export const mutations = {
   },
   setSearchScope(state, searchScope) {
     state.searchScope = searchScope;
+  },
+  setPage(state, pageNumber) {
+    state.pageNumber = pageNumber;
   }
 };
 
 export const actions = {
   async LOAD_LIBRARIES({ commit, state }, scope) {
     const response = await particle.listLibraries({
-      limit: 25,
+      limit: state.resultsToReturn,
       scope: scope,
+      page: state.pageNumber,
       filter: state.searchTerm,
       auth: state.api.token
         ? state.api.token['access_token']
