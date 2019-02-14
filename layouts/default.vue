@@ -69,7 +69,6 @@ export default {
       this.$store.commit("setTokenCode", this.$route.query.code);
 
       try {
-        console.log("OAUTH: ", process.env.OAUTH_CLIENT_ID);
         const response = await particleAPI.post(
           "oauth/token",
           `grant_type=authorization_code&client_id=${
