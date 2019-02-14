@@ -14,8 +14,8 @@ export const state = () => ({
   searchTerm: '',
   searchScope: 'public',
   pageNumber: '1',
-  resultsToReturn: '15',
-  totalRows: '100',
+  resultsToReturn: 15,
+  totalRows: 100,
   api: {
     tokenCode: null,
     token: null
