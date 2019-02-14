@@ -14,11 +14,11 @@
             <b-badge variant="secondary">{{ library.attributes.installs | approximate }}</b-badge>
           </h5>
           <small>by {{library.attributes.author}}</small>
+          <p class="mb-1">{{library.attributes.sentence}}</p>
+          <small>
+            <a :href="library.attributes.url" target="_new">{{library.attributes.url}}</a>
+          </small>
         </div>
-        <p class="mb-1">{{library.attributes.sentence}}</p>
-        <small>
-          <a :href="library.attributes.url" target="_new">{{library.attributes.url}}</a>
-        </small>
       </b-list-group-item>
     </b-list-group>
     <b-pagination
