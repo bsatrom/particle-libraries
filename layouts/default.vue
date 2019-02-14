@@ -13,7 +13,7 @@
           <b-nav-item to="/mine" v-if="loggedIn">Mine</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-form>
+          <b-nav-form @submit="searchLibs">
             <b-form-input
               size="sm"
               class="mr-sm-2"
@@ -56,7 +56,9 @@ export default {
     logout() {
       this.$logout("/");
     },
-    async searchLibs() {
+    async searchLibs(e) {
+      e.preventDefault();
+
       this.$store.commit("setSearchFilter", this.$data.searchTerm);
 
       await this.$store.dispatch("LOAD_LIBRARIES", this.$data.scope);
