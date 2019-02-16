@@ -22,6 +22,11 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  env: {
+    SECRET_KEY: process.env.SECRET_KEY || '1234',
+    OAUTH_CLIENT_ID: process.env.OAUTH_CLIENT_ID || '1234',
+    OAUTH_CLIENT_SECRET: process.env.OAUTH_CLIENT_SECRET || '1234'
+  },
   /*
    ** Customize the progress bar color
    */
