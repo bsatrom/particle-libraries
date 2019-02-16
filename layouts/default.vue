@@ -46,7 +46,9 @@ export default {
   },
   data() {
     return {
-      searchTerm: ""
+      searchTerm: "",
+      clientId: process.env.OAUTH_CLIENT_ID,
+      secret: process.env.OAUTH_CLIENT_SECRET
     };
   },
   methods: {
@@ -65,6 +67,7 @@ export default {
     }
   },
   async mounted() {
+    console.log("PROC Datas: ", this.$data.clientId);
     if (this.$route.query.code) {
       this.$store.commit("setTokenCode", this.$route.query.code);
 
@@ -72,8 +75,8 @@ export default {
         const response = await particleAPI.post(
           "oauth/token",
           `grant_type=authorization_code&client_id=${
-            process.env.OAUTH_CLIENT_ID
-          }&client_secret=${process.env.OAUTH_CLIENT_SECRET}&code=${
+            this.$data.clientId
+          }&client_secret=${this.$data.clientSecret}&code=${
             this.$route.query.code
           }`,
           {
