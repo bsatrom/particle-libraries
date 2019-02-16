@@ -67,7 +67,6 @@ export default {
     }
   },
   async mounted() {
-    console.log("PROC Datas: ", this.$data.clientId);
     if (this.$route.query.code) {
       this.$store.commit("setTokenCode", this.$route.query.code);
 
@@ -76,9 +75,7 @@ export default {
           "oauth/token",
           `grant_type=authorization_code&client_id=${
             this.$data.clientId
-          }&client_secret=${this.$data.clientSecret}&code=${
-            this.$route.query.code
-          }`,
+          }&client_secret=${this.$data.secret}&code=${this.$route.query.code}`,
           {
             headers: {
               "Content-Type": "application/x-www-form-urlencoded"
