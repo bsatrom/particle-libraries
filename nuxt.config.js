@@ -24,8 +24,8 @@ module.exports = {
   },
   env: {
     SECRET_KEY: process.env.SECRET_KEY || '1234',
-    OAUTH_CLIENT_ID: process.env.OAUTH_CLIENT_ID || '1234',
-    OAUTH_CLIENT_SECRET: process.env.OAUTH_CLIENT_SECRET || '1234'
+    OAUTH_CLIENT_ID: process.env.OAUTH_CLIENT_ID || 'client_id',
+    OAUTH_CLIENT_SECRET: process.env.OAUTH_CLIENT_SECRET || '123456'
   },
   /*
    ** Customize the progress bar color
